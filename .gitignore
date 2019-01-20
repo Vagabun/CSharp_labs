@@ -1,0 +1,7 @@
+#Folders
+.idea/
+bin/
+obj/
+
+# Files
+*.user
