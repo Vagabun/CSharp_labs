@@ -3,30 +3,20 @@
 namespace lab_0
 {
     class Program
-    {   
-        static void Main(string[] args)
-        {
-            Sort sort = new Sort(0, 100, 10);
-            sort.FillArray();
-            Console.Write("unsorted array: ");
-            sort.WriteArray();
-            sort.MergeSort(0, 9);
-//            sort.SelectionSort();
-            Console.Write("sorted array: ");
-            sort.WriteArray();
-        }
-    }
-
-    class Sort
     {
-        private readonly int min_rand_value;
-        private readonly int max_rand_value;
-        private readonly int arr_size;
-        private int[] arr;
-        
-        //utils
-        public void FillArray()
+        private static int N;
+        private static int[] arr;
+        private const int min_rand_value = -100;
+        private const int max_rand_value = 100;
+        private static void ReadInput()
         {
+            Console.WriteLine("Input N: ");
+            N = int.Parse(Console.ReadLine());
+        }
+
+        private static void FillSequence()
+        {
+            arr = new int[N];
             Random r = new Random();
             for (int i = 0; i < arr.Length; ++i)
             {
@@ -34,14 +24,7 @@ namespace lab_0
             }
         }
 
-        private void Swap(ref int a, ref int b)
-        {
-            int temp = a;
-            a = b;
-            b = temp;
-        }
-
-        public void WriteArray()
+        private static void WriteSequence()
         {
             foreach (var i in arr)
             {
@@ -49,21 +32,36 @@ namespace lab_0
             }
             Console.WriteLine();
         }
-        
-        public Sort(int min_rand, int max_rand, int size)
+        static void Main(string[] args)
         {
-            min_rand_value = min_rand;
-            max_rand_value = max_rand;
-            arr_size = size;
-            arr = new int[arr_size];
+            ReadInput();
+            FillSequence();
+            Console.WriteLine("Source sequence: ");
+            WriteSequence();
+            Sort s = new Sort();
+            s.MergeSort(ref arr, 0, N - 1);
+//            s.SelectionSort(ref arr, N);
+            Console.WriteLine("Sorted sequence: ");
+            WriteSequence();
+        }
+    }
+
+    class Sort
+    {
+
+        private void Swap(ref int a, ref int b)
+        {
+            int temp = a;
+            a = b;
+            b = temp;
         }
         
-        public void SelectionSort()
+        public void SelectionSort(ref int[] arr, int length)
         {
-            for (int i = 0; i < arr.Length - 1; i++)
+            for (int i = 0; i < length - 1; i++)
             {
                 int m = i;
-                for (int j = i + 1; j < arr.Length; j++)
+                for (int j = i + 1; j < length; j++)
                 {
                     if (arr[j] < arr[m])
                         m = j;
@@ -73,13 +71,13 @@ namespace lab_0
             }
         }
 
-        public void MergeSort(int a, int b)
+        public void MergeSort(ref int[] arr, int a, int b)
         {
             if (a >= b)
                 return;
             int m = (a + b) / 2;
-            MergeSort(a, m);
-            MergeSort(m + 1, b);
+            MergeSort(ref arr, a, m);
+            MergeSort(ref arr, m + 1, b);
             int i = a;
             int j = m + 1;
             int[] temp = new int[(a + 1) + b];
