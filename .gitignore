@@ -1,4 +1,8 @@
+#System
+.DS_Store
+
 #Folders
+.vs/
 .idea/
 bin/
 obj/
