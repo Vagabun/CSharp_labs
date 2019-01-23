@@ -32,6 +32,7 @@ namespace lab_0
             }
             Console.WriteLine();
         }
+
         static void Main(string[] args)
         {
             ReadInput();
