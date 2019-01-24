@@ -8,7 +8,8 @@ namespace lab_0
         private static int[] arr;
         private const int min_rand_value = -100;
         private const int max_rand_value = 100;
-        private static void ReadInput()
+
+        private static void Input()
         {
             Console.WriteLine("Input N: ");
             N = int.Parse(Console.ReadLine());
@@ -35,29 +36,28 @@ namespace lab_0
 
         static void Main(string[] args)
         {
-            ReadInput();
+            Input();
             FillSequence();
             Console.WriteLine("Source sequence: ");
             WriteSequence();
-            Sort s = new Sort();
-            s.MergeSort(ref arr, 0, N - 1);
-//            s.SelectionSort(ref arr, N);
+            Sort.MergeSort(ref arr, 0, N - 1);
+            //Sort.SelectionSort(ref arr, N - 1);
             Console.WriteLine("Sorted sequence: ");
             WriteSequence();
         }
     }
 
-    class Sort
+    static class Sort
     {
 
-        private void Swap(ref int a, ref int b)
+        static private void Swap(ref int a, ref int b)
         {
             int temp = a;
             a = b;
             b = temp;
         }
         
-        public void SelectionSort(ref int[] arr, int length)
+        static public void SelectionSort(ref int[] arr, int length)
         {
             for (int i = 0; i < length - 1; i++)
             {
@@ -72,7 +72,7 @@ namespace lab_0
             }
         }
 
-        public void MergeSort(ref int[] arr, int a, int b)
+        static public void MergeSort(ref int[] arr, int a, int b)
         {
             if (a >= b)
                 return;
