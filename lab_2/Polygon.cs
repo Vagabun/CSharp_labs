@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace lab_2 {
     internal sealed class Polygon : Shape {
-        private int _pointsCount { get; set; }
+        //private int _pointsCount { get; set; }
         private List<Point> _pointsList;
 
         public Polygon(int pointsCount, List<Point> pointsList) {
-            _pointsCount = pointsCount;
+            //_pointsCount = pointsCount;
             _pointsList = new List<Point>(pointsList);
             _pointsList.Add(_pointsList.First());
 
@@ -25,7 +25,7 @@ namespace lab_2 {
                 newX += EuclidMetric(arr[i], arr[i + 1]) * arr[i].x;
                 newY += EuclidMetric(arr[i], arr[i + 1]) * arr[i].y;
             }
-            return new Point(newX / calculatePerimeter(), newY / calculatePerimeter());
+            return new Point(newX / perimeter, newY / perimeter);
         }
 
         public override double calculatePerimeter() {
@@ -48,6 +48,11 @@ namespace lab_2 {
 
         private double EuclidMetric(Point p1, Point p2) {
             return Math.Sqrt(Math.Pow(p1.x - p2.x, 2) + Math.Pow(p1.y - p2.y, 2));
+        }
+
+        public override string ToString() {
+            return string.Format("Polygon: Square = {0}, Perimeter = {1}, " +
+                "center of mass in ({2},{3})", square, perimeter, centerOfMass.x, centerOfMass.y);
         }
     }
 }

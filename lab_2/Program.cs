@@ -8,6 +8,7 @@ namespace lab_2 {
             List<Shape> shapes = new List<Shape>();
 
             while (true) {
+                printHelp();
                 var key = Console.ReadKey();
 
                 switch (key.Key) {
@@ -42,11 +43,10 @@ namespace lab_2 {
             Console.WriteLine("q - exit of program");
         }
 
-        //TODO: ToString Method
         private static void printShapes(List<Shape> shapes) {
             Console.WriteLine();
             foreach (Shape item in shapes)
-                Console.WriteLine(item.ToString());
+                Console.WriteLine(item);
         }
 
         private static void createMenu(List<Shape> shapes) {
@@ -83,6 +83,7 @@ namespace lab_2 {
 
         private static void createEllipse(List<Shape> shapes) {
             Point focus1, focus2;
+            Console.WriteLine();
             Console.WriteLine("Input coordinates of focuses in a format x1 y1 x2 y2");
             string line = Console.ReadLine();
             var regForPoint = new Regex(@"(\d*\.?\d+)\s+(\d*\.?\d+)");
@@ -103,6 +104,7 @@ namespace lab_2 {
 
         private static void createCircle(List<Shape> shapes) {
             Point center;
+            Console.WriteLine();
             Console.WriteLine("Input coordinates of circle's center in a format x y");
             string line = Console.ReadLine();
             var regForPoint = new Regex(@"(\d*\.?\d+)\s+(\d*\.?\d+)");
@@ -111,7 +113,7 @@ namespace lab_2 {
                 GroupCollection group1 = matches[0].Groups;
                 center = new Point(Convert.ToDouble(group1[1].ToString()), Convert.ToDouble(group1[2].ToString()));
                 Console.WriteLine("Input a radius");
-                double radius = Convert.ToDouble(Console.ReadLine().ToString());
+                double radius = Convert.ToDouble(Console.ReadLine());
                 shapes.Add(new Circle(center, radius));
             }
             else {
@@ -122,6 +124,7 @@ namespace lab_2 {
         private static void createPolygon(List<Shape> shapes) {
             int n;
             List<Point> points = new List<Point>();
+            Console.WriteLine();
             Console.WriteLine("Input a number of points in a polygon");
             n = Convert.ToInt32(Console.ReadLine());
             if (n <= 2) {
