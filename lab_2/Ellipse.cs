@@ -9,6 +9,7 @@ namespace lab_2 {
         private double _focalDistance { get; set; }
         private double _e { get; set; }
 
+        //TODO: fix focal distance
         public Ellipse(Point focus_1, Point focus_2, double semiMajorAxis) {
             _focus_1 = focus_1;
             _focus_2 = focus_2;
