@@ -86,13 +86,11 @@ namespace lab_2 {
             Console.WriteLine();
             Console.WriteLine("Input coordinates of focuses in a format x1 y1 x2 y2");
             string line = Console.ReadLine();
-            var regForPoint = new Regex(@"(\d*\.?\d+)\s+(\d*\.?\d+)");
-            var matches = regForPoint.Matches(line);
-            if (matches.Count == 2) {
-                GroupCollection group1 = matches[0].Groups;
-                GroupCollection group2 = matches[1].Groups;
-                focus1 = new Point(Convert.ToDouble(group1[1].Value), Convert.ToDouble(group1[2].Value));
-                focus2 = new Point(Convert.ToDouble(group2[1].Value), Convert.ToDouble(group2[2].Value));
+            Regex regForPoint = new Regex(@"-?[0-9]\.?[0-9]*");
+            MatchCollection matches = regForPoint.Matches(line);
+            if (matches.Count == 4) {
+                focus1 = new Point(Convert.ToDouble(matches[0].Value), Convert.ToDouble(matches[1].Value));
+                focus2 = new Point(Convert.ToDouble(matches[2].Value), Convert.ToDouble(matches[3].Value));
                 Console.WriteLine("Input a length of a semi-major axis");
                 double axis = Convert.ToDouble(Console.ReadLine());
                 shapes.Add(new Ellipse(focus1, focus2, axis));
@@ -107,11 +105,10 @@ namespace lab_2 {
             Console.WriteLine();
             Console.WriteLine("Input coordinates of circle's center in a format x y");
             string line = Console.ReadLine();
-            var regForPoint = new Regex(@"(\d*\.?\d+)\s+(\d*\.?\d+)");
-            var matches = regForPoint.Matches(line);
-            if (matches.Count == 1) {
-                GroupCollection group1 = matches[0].Groups;
-                center = new Point(Convert.ToDouble(group1[1].ToString()), Convert.ToDouble(group1[2].ToString()));
+            Regex regForPoint = new Regex(@"-?[0-9]\.?[0-9]*");
+            MatchCollection matches = regForPoint.Matches(line);
+            if (matches.Count == 2) {
+                center = new Point(Convert.ToDouble(matches[0].Value), Convert.ToDouble(matches[1].Value));
                 Console.WriteLine("Input a radius");
                 double radius = Convert.ToDouble(Console.ReadLine());
                 shapes.Add(new Circle(center, radius));
@@ -133,14 +130,14 @@ namespace lab_2 {
             }
             Console.WriteLine("Input {0} points in a format x1 y1 x2 y2 .... xn yn", n);
             string line = Console.ReadLine();
-            var regForPoint = new Regex(@"(\d*\.?\d+)\s+(\d*\.?\d+)");
-            var matches = regForPoint.Matches(line);
-            if (matches.Count == n) {
-                foreach (Match match in matches) {
-                    GroupCollection group = match.Groups;
-                    points.Add(new Point(Convert.ToDouble(group[1].Value), Convert.ToDouble(group[2].Value)));
+            Regex regForPoint = new Regex(@"-?[0-9]\.?[0-9]*");
+            MatchCollection matches = regForPoint.Matches(line);
+            if (matches.Count == n * 2) {
+                for (int i = 0; i < matches.Count - 1; i += 2) {
+                    points.Add(
+                        new Point(Convert.ToDouble(matches[i].Value), Convert.ToDouble(matches[i + 1].Value)));
                 }
-                shapes.Add(new Polygon(n, points));
+                shapes.Add(new Polygon(points));
             }
             else {
                 Console.WriteLine("Wrong input");

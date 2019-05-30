@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 
 namespace lab_2 {
     internal sealed class Ellipse : Shape {
@@ -11,14 +10,19 @@ namespace lab_2 {
         private double _e { get; set; }
 
         public Ellipse(Point focus_1, Point focus_2, double semiMajorAxis) {
+            if (Math.Abs(Utils.EuclidMetric(focus_1, focus_2)) < 2 * semiMajorAxis) {
+                Console.WriteLine("Wrong input: distance between focuses " +
+                    "can't be less than 2 * semi-major axis");
+                return;
+            }
+
             _focus_1 = focus_1;
             _focus_2 = focus_2;
             _semiMajorAxis = semiMajorAxis;
 
-            _focalDistance = Math.Sqrt(Math.Pow(Math.Abs(_focus_1.x - _focus_2.x), 2) +
-                Math.Pow(Math.Abs(_focus_1.y - _focus_2.y), 2)) / 2;
+            _focalDistance = Utils.EuclidMetric(_focus_1, _focus_2) / 2;
             _e = _focalDistance / _semiMajorAxis;
-            _semiMinorAxis = _semiMinorAxis * Math.Sqrt(1 - Math.Pow(_e, 2));
+            _semiMinorAxis = _semiMajorAxis * Math.Sqrt(1 - Math.Pow(_e, 2));
 
             perimeter = calculatePerimeter();
             square = calculateSquare();
@@ -40,7 +44,6 @@ namespace lab_2 {
         }
 
         public override string ToString() {
-
             return string.Format("Ellipse: Square = {0}, Perimeter = {1}, " +
                 "center of mass in ({2},{3})", square, perimeter, centerOfMass.x, centerOfMass.y);
         }
