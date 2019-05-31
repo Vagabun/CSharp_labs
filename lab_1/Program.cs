@@ -207,10 +207,16 @@ namespace lab_1 {
                             {
                                 case FilesState.EOF1:
                                     //output and read until EOF2
+
+                                    /*show EOF position */
+                                    //Console.Write("\n0x{0:X}: ", f2.Position);
                                     ReadTillEOF(ref f2, "(0x{0:X}) ", "<EOF>", N, ostate);
                                     break;
                                 case FilesState.EOF2:
                                     //output and read until EOF1
+
+                                    /* show EOF position */
+                                    //Console.Write("\n0x{0:X}: ", f1.Position);
                                     ReadTillEOF(ref f1, "0x{0:X} ", "(<EOF>) ", N, ostate);
                                     break;
                                 case FilesState.EOFs:
