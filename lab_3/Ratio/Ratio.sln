@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RatioLibrary", "RatioLibrary\RatioLibrary.csproj", "{7E1BA9F9-6750-4943-8ECD-B332177F447F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DriverProgram", "DriverProgram\DriverProgram.csproj", "{B0A4B39D-4C35-4DB9-B29B-396A0D60FD50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +15,9 @@ Global
 		{7E1BA9F9-6750-4943-8ECD-B332177F447F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E1BA9F9-6750-4943-8ECD-B332177F447F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E1BA9F9-6750-4943-8ECD-B332177F447F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0A4B39D-4C35-4DB9-B29B-396A0D60FD50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0A4B39D-4C35-4DB9-B29B-396A0D60FD50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0A4B39D-4C35-4DB9-B29B-396A0D60FD50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0A4B39D-4C35-4DB9-B29B-396A0D60FD50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
