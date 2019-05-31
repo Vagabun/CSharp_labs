@@ -74,7 +74,7 @@ namespace RatioLibrary {
         public double ToDouble() {
             if (Denominator == 0)
                 throw new DenominatorException("Error: Denominator can't be equal to 0");
-            return Convert.ToDouble(Numerator / Denominator);
+            return (double)Numerator / Denominator;
         }
 
         public override string ToString() {
