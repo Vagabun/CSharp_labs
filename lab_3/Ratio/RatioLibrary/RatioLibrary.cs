@@ -8,11 +8,11 @@ namespace RatioLibrary {
 
     public class Ratio {
 
-        private int Numerator { get; set; }
-        private int Denominator { get; set; }
+        public int Numerator { get; private set; }
+        public int Denominator { get; private set; }
 
         private static int GCD(int a, int b) {
-            return Convert.ToBoolean(b) ? GCD(b, a % b) : a;
+            return (b == 0) ? a : GCD(b, a % b);
         }
 
         public Ratio(int numerator, int denominator) {
@@ -60,15 +60,7 @@ namespace RatioLibrary {
         public static Ratio operator /(Ratio r1, Ratio r2) {
             if (r2.Numerator == 0)
                 throw new DenominatorException("Error: Resulting ratio has 0 as denominator");
-
-            /* same as multiplication method */
-            //return r1 * new Ratio(r2.Denominator, r2.Numerator);
-
-            int gcd1 = GCD(r1.Numerator, r2.Numerator);
-            int gcd2 = GCD(r1.Denominator, r2.Denominator);
-
-            return new Ratio(r1.Numerator / gcd1 * r2.Denominator / gcd2,
-                r1.Denominator / gcd2 * r2.Numerator / gcd1);
+            return r1 * new Ratio(r2.Denominator, r2.Numerator);
         }
 
         public double ToDouble() {
@@ -80,6 +72,5 @@ namespace RatioLibrary {
         public override string ToString() {
             return string.Format("{0}/{1}", Numerator, Denominator);
         }
-
     }
 }
