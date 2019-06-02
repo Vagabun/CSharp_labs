@@ -3,7 +3,31 @@
 namespace BitContainer {
     class Program {
         static void Main(string[] args) {
-            Console.WriteLine("Hello World!");
+            BitContainer container = new BitContainer();
+            container.PushBit(1);
+            container.PushBit(1);
+            container.PushBit(1);
+            container.PushBit(0);
+            container.PushBit(1);
+            container.PushBit(0);
+            container.PushBit(true);
+            container.PushBit(true);
+            Console.WriteLine(container);
+
+            container[2] = 0;
+            container[1] = 0;
+            Console.WriteLine(container);
+
+            container.Insert(2, 1);
+            Console.WriteLine(container);
+
+            container.Remove(2);
+            Console.WriteLine(container);
+
+            foreach (var i in container) {
+                Console.Write(i);
+                Console.Write(" ");
+            }
         }
     }
 }
