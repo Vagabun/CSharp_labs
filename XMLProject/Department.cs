@@ -28,15 +28,33 @@ namespace XMLProject {
             }
         }
 
-        public void RemoveEmployee(string name) {
-            var item = Staff.Find((obj) => obj.Name == name);
-            Staff.Remove(item);
+        public void RemoveEmployee(int index) {
+            //var item = Staff.Find((obj) => obj.Name == name);
+            Staff.RemoveAt(index);
+        }
+
+        public void EditDepartment(string newName, double newRate) {
+            //var index = Departments.FindIndex((obj) => obj.Name == name);
+            //Departments[index].Name = newName;
+            //Departments[index].Rate = newRate;
+            Name = newName;
+            Rate = newRate;
         }
 
         public Employee MoveEmployee(string name) {
             var item = Staff.Find((obj) => obj.Name == name);
             Staff.Remove(item);
             return item;
+        }
+
+        public override string ToString() {
+            return string.Format("department name: {0}, rate: {1}", Name, Rate);
+        }
+
+        public void PrintEmployees() {
+            Console.WriteLine();
+            for (int i = 0; i < Staff.Count; ++i)
+                Console.WriteLine("{0} - {1}", i, Staff[i]);
         }
     }
 }

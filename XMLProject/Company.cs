@@ -29,12 +29,6 @@ namespace XMLProject {
                 Departments.RemoveAt(index);
         }
 
-        public void EditDepartment(string name, string newName, double newRate) {
-            var index = Departments.FindIndex((obj) => obj.Name == name);
-            Departments[index].Name = newName;
-            Departments[index].Rate = newRate;
-        }
-
         public void MoveEmployee(string employeeName, string oldDepartmentName, string newDepartmentName) {
             var oldIndex = Departments.FindIndex((obj) => obj.Name == oldDepartmentName);
             var newIndex = Departments.FindIndex((obj) => obj.Name == newDepartmentName);
@@ -45,7 +39,8 @@ namespace XMLProject {
         public void PrintDepartments() {
             Console.WriteLine();
             for (int i = 0; i < Departments.Count; ++i)
-                Console.WriteLine("{0} - department name: {1} rate: {2}", i, Departments[i].Name, Departments[i].Rate);
+                Console.WriteLine("{0} - {1}", i, Departments[i]);
+            //Console.WriteLine("{0} - department name: {1} rate: {2}", i, Departments[i].Name, Departments[i].Rate);
         }
     }
 }

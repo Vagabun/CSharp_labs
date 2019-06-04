@@ -17,5 +17,11 @@ namespace XMLProject {
             Rate = rate;
             Position = position;
         }
+
+        public override string ToString() {
+            return
+                string.Format("name: {0}, salary: {1}, rate: {2}, position: {3}",
+                Name, Salary, Rate, Position);
+        }
     }
 }
