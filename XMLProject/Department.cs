@@ -29,22 +29,18 @@ namespace XMLProject {
         }
 
         public void RemoveEmployee(int index) {
-            //var item = Staff.Find((obj) => obj.Name == name);
             Staff.RemoveAt(index);
         }
 
         public void EditDepartment(string newName, double newRate) {
-            //var index = Departments.FindIndex((obj) => obj.Name == name);
-            //Departments[index].Name = newName;
-            //Departments[index].Rate = newRate;
             Name = newName;
             Rate = newRate;
         }
 
-        public Employee MoveEmployee(string name) {
-            var item = Staff.Find((obj) => obj.Name == name);
-            Staff.Remove(item);
-            return item;
+        public Employee MoveEmployee(int index) {
+            Employee e = Staff[index];
+            Staff.RemoveAt(index);
+            return e;
         }
 
         public override string ToString() {
