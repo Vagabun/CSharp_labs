@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Company xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Departments>
+    <Department>
+      <Staff>
+        <Employee>
+          <Name>John Smith</Name>
+          <Salary>30000</Salary>
+          <Rate>2</Rate>
+          <Position>mechanic</Position>
+        </Employee>
+      </Staff>
+      <Name>Machinery</Name>
+      <Rate>4</Rate>
+    </Department>
+    <Department>
+      <Staff>
+        <Employee>
+          <Name>Julio</Name>
+          <Salary>25000</Salary>
+          <Rate>2.7</Rate>
+          <Position>weapon master</Position>
+        </Employee>
+      </Staff>
+      <Name>Weapons</Name>
+      <Rate>1.2999999999999998</Rate>
+    </Department>
+  </Departments>
+</Company>
