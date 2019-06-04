@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Threading.Tasks;
 
 namespace MatrixImageFilter {
     public class MatrixFilter {
@@ -69,6 +70,21 @@ namespace MatrixImageFilter {
                         ApplyKernelToPixelUnsafe(x, y, bytesPerPixel, heightInPixels,
                             widthInBytes, firstPixelPointer, currentLine, data.Stride);
                 }
+
+                //parallel section
+                //Task[] threads = new Task[heightInPixels];
+                //for (int y = 0; y < threads.Length; ++y) {
+                //    byte* currentLine = firstPixelPointer + y * data.Stride;
+                //    threads[y] = Task.Run(
+                //        () => {
+                //            for (int x = 0; x < widthInBytes; x += bytesPerPixel)
+                //                ApplyKernelToPixelUnsafe(x, y, bytesPerPixel, heightInPixels,
+                //            widthInBytes, firstPixelPointer, currentLine, data.Stride);
+                //        });
+                //}
+                //Task.WaitAll(threads);
+
+
                 processedImage.UnlockBits(data);
             }
             return processedImage;
