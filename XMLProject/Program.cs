@@ -8,19 +8,14 @@ namespace XMLProject {
             Company company = new Company();
 
             string path = "db.xml";
-            if (File.Exists(path)) {
-                using (FileStream fs = File.OpenRead(path)) {
+            if (File.Exists(path))
+                using (FileStream fs = File.OpenRead(path))
                     company = (Company)formatter.Deserialize(fs);
-                }
-                File.Delete(path);
-            }
 
             Menu.MainMenu(ref company);
 
-            using (FileStream fs = File.Create(path)) {
-                formatter.Serialize(fs, company);
-            }
-
+            using (StreamWriter sw = new StreamWriter(path, false))
+                formatter.Serialize(sw, company);
         }
     }
 }
